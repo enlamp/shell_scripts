@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Date: 2009/05/26
+# Author: edy.liu
+# Usage: check the port and restart the service if the port is off
+
+# The port, the : makes it easy to snag only ports 
+PORT=:80 
+
+# The name of the service  
+INITS=/etc/init.d/httpd 
+
+# Check the port exists or not
+COUNT=`netstat -ln | grep $PORT | wc -l`
+if [ $COUNT -lt 1 ]; then
+   $INITS start
+fi
+
+# End
