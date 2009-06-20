@@ -12,12 +12,10 @@
 # Test on CentOS series 5.x
 # Date: 2009/06/18
 
+echo "install http://dag.wieers.com/rpm/packages/rpmforge-release/"
 rpm -ivh http://download.fedora.redhat.com/pub/epel/5/`uname -i`/epel-release-`cut -d" " /etc/redhat-release -f 3 |awk -F"." '{print $1}'`-`cut -d" " /etc/redhat-release -f 3 |awk -F"." '{print $2}'`.noarch.rpm
 
-yum install -y perl-Archive-Tar 
-yum install -y perl-IO-Zlib 
-yum install -y perl-Net-DNS
-yum install -y perl-Mail-SPF-Query
+yum install -y perl-Archive-Tar perl-IO-Zlib perl-Net-DNS perl-Mail-SPF-Query
 perl -e 'use CPAN; install MIME::Base64;'
 perl -e 'use CPAN; install DB_File;'
 perl -e 'use CPAN; install Net::SMTP;'
